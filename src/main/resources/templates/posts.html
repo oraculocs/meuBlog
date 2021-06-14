@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+
+<title>Meu BlogPost</title>
+<!-- Adicionando CSS ao Projeto -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="style/styleCss.css" /> 
+
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-light bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" style="font-weight: bold; color: white"
+					href="/posts">Meu Blog</a>
+				<a href="/newpost" class="btn btn-primary btn-sm" role="button">Criar um Post</a>
+			</div>
+		</nav>
+		
+	</header>
+	
+	 
+
+	<section>
+		<div class="container" style="width: 60%; padding-bottom: 30px;">
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb" style="background-color: white; padding-left: 0px; padding-top: 10px;">
+					<li class="breadcrumb-item active" aria-current="page">Lista de Posts</li>
+				</ol>
+			</nav>
+
+			<div class="card shadow-sm bg-light rounded" style="margin-top: 20px;" th:each="post : ${posts}">
+				<div class="card-body">
+					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+						<span th:text="${post.autor}"></span> - 
+						<span th:text="${#temporals.format(post.data, 'dd/MM/yyyy')}"></span>
+					</p>
+					
+					<a th:href="${(#mvc.url('PR#getPostDetalhes').arg(0, post.id)).build()}">
+						<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+							<span th:text="${post.titulo}"></span>
+						</h4>
+					</a>
+					
+					<p class="card-text"><span th:utext="${#strings.abbreviate(post.texto,400)}"></span></p>
+				
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+
+
+</body>
+
+<div class="footer bg-dark">
+  <div class="container-fluid" style="padding: 20px;">
+    <div class="row">
+      <div class="col">
+        <h6 style="text-align:center; color: white">
+           App Desenvolvido por <a class="link" href="http://oraculocs.github.io/" target="_blank"
+                rel="noreferrer">Carlos Augusto</a> </h6>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" style="min-height: 100%">
+<head>
+<meta charset="UTF-8">
+
+<title>Meu BlogPost</title>
+<!-- Adicionando CSS ao Projeto -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+	
+	<!-- Icones do Google Fontes -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="style/styleCss.css" /> 
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-light bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" style="font-weight: bold; color: white"
+					href="/posts">Meu Blog</a>
+			</div>
+		</nav>
+
+	</header>
+
+	<section>
+		<div class="container" style="width: 60%; padding-bottom: 30px;">
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb" style="background-color: white; padding-left: 0px; padding-top: 10px;">
+					<li class="breadcrumb-item" aria-current="page"><a href="/posts">Lista de Posts</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Novo Post</li>
+				</ol>
+			</nav>
+
+			<div>
+				<th:block th:include="mensagemValidacao"></th:block>
+				<form method="post">
+					<div class="form-group">
+						Título *: <input type="text" class="form-control" name="titulo" placeholder="Informe um título para o seu Post" required="required">
+					</div>
+					<br />
+					<div class="form-group">
+						Autor *: <input type="text" class="form-control" name="autor" placeholder="Informe o nome do Autor do Post" required="required">
+					</div>
+					<br />
+					Texto *: <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="O que você anda fazendo?" rows="2" cols="4" required="required"></textarea>
+					
+					<small class="form-text text-muted">(*) Campos obrigatórios</small> 
+					<br />
+					<button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
+					<a href="/posts" class="btn btn-danger" role="button" style="margin-top: 10px;">Cancelar</a>
+				
+				</form>
+			
+			</div>
+			
+
+		</div>
+
+	</section>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Descrição detalhada sobre o seu Post.',
+        tabsize: 2,
+        height: 200
+    });
+</script>
+
+</body>
+
+<div class="footer bg-dark" style="position: absolute; bottom: 0; width: 100%; height: 60px; text-align: center; line-height: 100px;">
+  <div class="container-fluid" style="padding: 20px;">
+    <div class="row">
+      <div class="col">
+        <h6 style="text-align:center; color: white">
+           App Desenvolvido por <a class="link" href="http://oraculocs.github.io/" target="_blank"
+                rel="noreferrer">Carlos Augusto</a> </h6>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+
+</html>
